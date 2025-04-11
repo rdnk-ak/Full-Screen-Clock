@@ -20,7 +20,12 @@
             align-items: center;
             height: 100vh;
             background-color: #000;
-            color: white;
+            background-image: url(./img/bak.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
             font-family: Arial, sans-serif;
             text-align: center;
             flex-direction: column;
@@ -35,7 +40,7 @@
         }
         #fullscreen-btn {
             position: absolute;
-            bottom: 20px;
+            top: 20px;
             right: 20px;
             padding: 10px 20px;
             font-size: 1.5vw;
@@ -112,8 +117,13 @@
                 document.documentElement.requestFullscreen().then(() => {
                     document.getElementById('fullscreen-btn').style.display = 'none';
                 });
-            }
         }
+    }
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            document.getElementById('fullscreen-btn').style.display = 'block';
+        }
+    });
     </script>
 </body>
 </html>
